@@ -2,5 +2,6 @@
   "semi": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "singleQuote": true
+  "singleQuote": true,
+  "printWidth": 100
 }
