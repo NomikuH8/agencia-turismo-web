@@ -1,33 +1,33 @@
-import { fastifyAutoload } from "@fastify/autoload";
-import { fastifySwagger } from "@fastify/swagger";
-import { fastifyStatic } from "@fastify/static";
-import { fastifyCors } from "@fastify/cors";
-import { fastify } from "fastify";
-import { join } from "path";
-import { openApi } from "./openapi";
+import { fastifyAutoload } from '@fastify/autoload'
+import { FastifyInstance, fastify } from 'fastify'
+import { fastifySwagger } from '@fastify/swagger'
+import { fastifyStatic } from '@fastify/static'
+import { fastifyCors } from '@fastify/cors'
+import { join } from 'path'
+import { openApi } from './openapi'
 
-export default async function getServer() {
+export default async function getServer(): Promise<FastifyInstance> {
   const server = fastify({
     logger: true,
   })
 
-  server.register(fastifyAutoload, {
+  await server.register(fastifyAutoload, {
     dir: join(__dirname, '..', 'routes'),
-    dirNameRoutePrefix: false
+    dirNameRoutePrefix: false,
   })
 
-  server.register(fastifyCors, {
-    origin: '*'
+  await server.register(fastifyCors, {
+    origin: '*',
   })
 
-  server.register(fastifyStatic, {
-    root: join(__dirname, '..', '..', 'public')
+  await server.register(fastifyStatic, {
+    root: join(__dirname, '..', '..', 'public'),
   })
 
-  server.register(fastifySwagger, {
+  await server.register(fastifySwagger, {
     openapi: openApi,
     hideUntagged: true,
   })
 
-  return server
+  return await server
 }
