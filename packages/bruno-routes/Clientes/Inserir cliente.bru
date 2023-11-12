@@ -1,0 +1,18 @@
+meta {
+  name: Inserir cliente
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/api/v1/clientes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "cleiton borges",
+    "email": "cleiton.borges@gmail.com"
+  }
+}

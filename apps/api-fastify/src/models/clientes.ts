@@ -1,13 +1,26 @@
+import { Database } from 'better-sqlite3'
 import { ClienteType } from '../interfaces/cliente'
-import getDB from '../utils/getDB'
 
 export class ClientesDAO {
+  private db: Database
+
+  constructor(dbParam: Database) {
+    this.db = dbParam
+  }
+
   async getAll(): Promise<ClienteType[]> {
-    const db = await getDB()
+    const sql = `SELECT * FROM cliente`
 
-    const sql = `SELECT * FROM clientes`
-
-    const result = db.prepare(sql).all() as ClienteType[]
+    const result = this.db.prepare(sql).all() as ClienteType[]
     return result
+  }
+
+  async insertOne(toInsert: { nome: string; email: string }): Promise<number | bigint> {
+    const { nome, email } = toInsert
+
+    const sql = `INSERT INTO cliente (nome, email) VALUES (?, ?)`
+
+    const result = this.db.prepare(sql).run([nome, email])
+    return result.lastInsertRowid
   }
 }
