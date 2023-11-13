@@ -1,10 +1,15 @@
 import { resolve } from 'path'
-import { paths } from '../config/paths'
-import { existsSync, unlinkSync } from 'fs'
+import { existsSync, mkdirSync, unlinkSync } from 'fs'
 import Database from 'better-sqlite3'
 
 export function createDB() {
-  const databaseFilePath = resolve(paths.db, 'database.db')
+  const rootPath = resolve(__dirname, '..', '..', 'database')
+
+  const databaseFilePath = resolve(rootPath, 'database.db')
+  if (!existsSync(rootPath)) {
+    mkdirSync(rootPath)
+  }
+
   if (existsSync(databaseFilePath)) {
     unlinkSync(databaseFilePath)
   }
