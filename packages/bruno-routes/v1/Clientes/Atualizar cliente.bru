@@ -1,10 +1,10 @@
 meta {
-  name: Inserir cliente
+  name: Atualizar cliente
   type: http
-  seq: 2
+  seq: 4
 }
 
-post {
+put {
   url: {{base_url}}/api/v1/clientes
   body: json
   auth: none
@@ -12,7 +12,8 @@ post {
 
 body:json {
   {
-    "nome": "cleiton borges",
-    "email": "cleiton.borges@gmail.com"
+    "id": 1,
+    "nome": "borges",
+    "email": "borges@gmail.com"
   }
 }
