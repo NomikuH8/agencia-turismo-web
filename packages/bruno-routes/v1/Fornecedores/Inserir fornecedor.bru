@@ -1,0 +1,18 @@
+meta {
+  name: Inserir fornecedor
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/api/v1/fornecedores
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "123milhas",
+    "site": "123milhas.com"
+  }
+}

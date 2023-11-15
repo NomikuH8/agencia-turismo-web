@@ -10,7 +10,6 @@ export interface ClientePostReturnType {
 }
 
 export interface ClientePutBodyType {
-  id: number
   nome: string
   email: string
 }

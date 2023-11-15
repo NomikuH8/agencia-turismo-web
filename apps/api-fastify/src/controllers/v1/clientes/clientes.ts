@@ -32,17 +32,6 @@ export class ClientesController {
     return cliente
   }
 
-  async getIdsWithDeleted(req: FastifyRequest, res: FastifyReply): Promise<ClienteType[]> {
-    const db = await getDB()
-    const clientesDao = new ClientesDAO(db)
-
-    const { ids } = req.body as { ids: number[] }
-    const clientes = await clientesDao.getIdsWithDeleted(ids)
-
-    db.close()
-    return clientes
-  }
-
   async POST(req: FastifyRequest, res: FastifyReply): Promise<ClientePostReturnType> {
     const db = await getDB()
     const clientesDao = new ClientesDAO(db)
@@ -65,9 +54,9 @@ export class ClientesController {
     const db = await getDB()
     const clientesDao = new ClientesDAO(db)
 
-    const { id, nome, email } = req.body as ClientePutBodyType
-    const result = await clientesDao.updateOne({
-      id,
+    const { id } = req.params as { id: number }
+    const { nome, email } = req.body as ClientePutBodyType
+    const result = await clientesDao.updateOne(id, {
       nome,
       email,
     })
@@ -83,11 +72,15 @@ export class ClientesController {
     const clientesDao = new ClientesDAO(db)
 
     const { id } = req.params as { id: number }
-    const result = await clientesDao.deleteOne(id)
+    const result = await clientesDao.getOneWithDeleted(id)
+
+    let changes = 0
+    if (result.deletado === 0) changes = await clientesDao.deleteOne(id)
+    else changes = await clientesDao.undoDeleteOne(id)
 
     db.close()
     return {
-      success: Boolean(result),
+      success: Boolean(changes),
     }
   }
 }

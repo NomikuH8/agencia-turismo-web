@@ -1,0 +1,18 @@
+meta {
+  name: Atualizar fornecedor
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/api/v1/fornecedores/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "decolar.com",
+    "site": "decolar.com.br"
+  }
+}

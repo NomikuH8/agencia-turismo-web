@@ -6,7 +6,7 @@
     "setup": "ts-node src/utils/setup.ts",
     "start": "nodemon src/main.ts",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest -i"
   },
   "dependencies": {
     "@fastify/autoload": "^5.8.0",

@@ -1,0 +1,18 @@
+meta {
+  name: Atualizar servico
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/api/v1/servicos/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "Passagens Aereas",
+    "descricao": "Viaje o mundo com sua família!"
+  }
+}

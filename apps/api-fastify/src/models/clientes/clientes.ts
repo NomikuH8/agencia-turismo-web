@@ -48,17 +48,17 @@ export class ClientesDAO {
     return result
   }
 
-  async insertOne(toInsert: InsertOneType): Promise<number | bigint> {
+  async insertOne(toInsert: InsertOneType): Promise<number> {
     const { nome, email } = toInsert
 
     const sql = `INSERT INTO cliente (nome, email) VALUES (?, ?)`
 
     const result = this.db.prepare(sql).run([nome, email])
-    return result.lastInsertRowid
+    return result.lastInsertRowid as number
   }
 
-  async updateOne(toUpdate: UpdateOneType): Promise<number> {
-    const { id, nome, email } = toUpdate
+  async updateOne(id: number, toUpdate: UpdateOneType): Promise<number> {
+    const { nome, email } = toUpdate
 
     const sql = `
       UPDATE cliente
@@ -75,6 +75,17 @@ export class ClientesDAO {
     const sql = `
       UPDATE cliente
       SET deletado = 1
+      WHERE id = ?
+    `
+
+    const result = this.db.prepare(sql).run([id])
+    return result.changes
+  }
+
+  async undoDeleteOne(id: number): Promise<number> {
+    const sql = `
+      UPDATE cliente
+      SET deletado = 0
       WHERE id = ?
     `
 

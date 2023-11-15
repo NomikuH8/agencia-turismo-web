@@ -1,0 +1,18 @@
+meta {
+  name: Inserir servico
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/api/v1/servicos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "Passagens Aereas",
+    "descricao": "Viaje o mundo com sua família!"
+  }
+}

@@ -14,11 +14,7 @@ export default async function clientes(fastify: FastifyInstance): Promise<void> 
     return await new ClientesController().POST(req, res)
   })
 
-  fastify.post('/api/v1/clientes/ids', async (req, res) => {
-    return await new ClientesController().getIdsWithDeleted(req, res)
-  })
-
-  fastify.put('/api/v1/clientes', async (req, res) => {
+  fastify.put('/api/v1/clientes/:id', async (req, res) => {
     return await new ClientesController().PUT(req, res)
   })
 

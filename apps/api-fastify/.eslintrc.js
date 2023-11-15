@@ -23,5 +23,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/prefer-readonly': 'off',
+    '@typescript-eslint/naming-convention': 'off',
   },
 }
