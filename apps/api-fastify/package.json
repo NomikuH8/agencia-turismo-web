@@ -5,6 +5,7 @@
   "scripts": {
     "setup": "ts-node src/utils/setup.ts",
     "start": "nodemon src/main.ts",
+    "build": "tsc -p .",
     "lint": "eslint .",
     "test": "jest -i"
   },

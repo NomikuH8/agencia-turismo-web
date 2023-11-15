@@ -1,3 +1,5 @@
 src/config/ports.ts
 src/config/paths.ts
 database/database.db
+dist/**/*
+dist
