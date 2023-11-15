@@ -70,7 +70,8 @@ export function createDB() {
     CREATE TABLE transacao_servico (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       transacao_id INTEGER NOT NULL,
-      servico_id INTEGER NOT NULL
+      servico_id INTEGER NOT NULL,
+      valor_cobrado REAL NOT NULL
     )
   `,
   ).run()
