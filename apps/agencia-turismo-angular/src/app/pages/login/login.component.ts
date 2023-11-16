@@ -40,12 +40,11 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   })
   hidePassword: boolean = true
-  wentWrong: boolean = false
 
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const authenticated = sessionStorage.getItem('authenticated')
