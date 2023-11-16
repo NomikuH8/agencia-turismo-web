@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "setup": "ts-node src/utils/setup.ts",
+    "populate": "ts-node src/utils/populateDB.ts",
     "start": "nodemon src/main.ts",
     "build": "tsc -p .",
     "lint": "eslint .",
