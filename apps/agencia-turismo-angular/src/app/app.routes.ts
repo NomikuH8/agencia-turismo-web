@@ -1,6 +1,12 @@
 import { Routes } from '@angular/router'
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component'
+
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component'
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component'
+import { fornecedoresRoutes } from './routes/fornecedores.routes'
+import { pagamentosRoutes } from './routes/pagamentos.routes'
+import { clientesRoutes } from './routes/clientes.routes'
+import { servicosRoutes } from './routes/servicos.routes'
+import { comprasRoutes } from './routes/compras.routes'
 
 export const routes: Routes = [
   {
@@ -29,23 +35,23 @@ export const routes: Routes = [
       },
       {
         path: 'clientes',
-        loadComponent: () => import('./pages/clientes/view-clientes/view-clientes.component').then((m) => m.ViewClientesComponent)
+        children: clientesRoutes
       },
       {
         path: 'fornecedores',
-        loadComponent: () => import('./pages/fornecedores/view-fornecedores/view-fornecedores.component').then((m) => m.ViewFornecedoresComponent)
+        children: fornecedoresRoutes
       },
       {
         path: 'servicos',
-        loadComponent: () => import('./pages/servicos/view-servicos/view-servicos.component').then((m) => m.ViewServicosComponent)
+        children: servicosRoutes
       },
       {
         path: 'compras',
-        loadComponent: () => import('./pages/compras/view-compras/view-compras.component').then((m) => m.ViewComprasComponent)
+        children: comprasRoutes
       },
       {
         path: 'pagamentos',
-        loadComponent: () => import('./pages/pagamentos/view-pagamentos/view-pagamentos.component').then((m) => m.ViewPagamentosComponent)
+        children: pagamentosRoutes
       }
     ],
   },
