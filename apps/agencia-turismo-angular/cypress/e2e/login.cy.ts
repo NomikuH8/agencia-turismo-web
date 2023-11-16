@@ -1,5 +1,5 @@
-describe('template spec', () => {
-  it('passes', () => {
+describe('Login', () => {
+  it('Login', () => {
     cy.visit('http://localhost:4200/')
 
     cy.get('input[type=email]').type('abluble@gmail.com')
