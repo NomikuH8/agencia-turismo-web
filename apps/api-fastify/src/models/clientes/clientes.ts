@@ -1,5 +1,6 @@
 import { Database } from 'better-sqlite3'
-import { ClienteType } from '../../interfaces/cliente'
+import { ClienteType } from 'shared'
+
 import { InsertOneType, UpdateOneType } from './bodies'
 
 export class ClientesDAO {

@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import getDB from '../../../utils/getDB'
 import { ServicosDAO } from '../../../models/servicos/servicos'
-import { ServicoType } from '../../../interfaces/servico'
+import { ServicoType } from 'shared'
 import { FornecedoresDAO } from '../../../models/fornecedores/fornecedores'
 
 export class ServicosController {

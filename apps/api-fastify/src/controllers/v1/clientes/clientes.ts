@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { ClienteType } from '../../../interfaces/cliente'
+import { ClienteType } from 'shared'
 import { ClientesDAO } from '../../../models/clientes/clientes'
 import getDB from '../../../utils/getDB'
 import {

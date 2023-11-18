@@ -1,6 +1,6 @@
 import { Database } from 'better-sqlite3'
 import { InsertOneType, UpdateOneType } from './bodies'
-import { ServicoType } from '../../interfaces/servico'
+import { ServicoType } from 'shared'
 
 export class ServicosDAO {
   private db: Database

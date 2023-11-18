@@ -6,7 +6,7 @@ import {
   UpdateAssociateServicoType,
   UpdateOneType,
 } from './bodies'
-import { FornecedorType } from '../../interfaces/fornecedor'
+import { FornecedorType } from 'shared'
 
 export class FornecedoresDAO {
   private db: Database
