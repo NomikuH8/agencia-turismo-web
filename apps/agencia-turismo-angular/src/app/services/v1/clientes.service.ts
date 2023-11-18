@@ -12,7 +12,7 @@ export class ClientesService {
   constructor(private http: HttpClient) {}
 
   getClientes() {
-    return this.http.get(`${this.serverUrl}/api/v1/clientes`)
+    return this.http.get<ClienteType[]>(`${this.serverUrl}/api/v1/clientes`)
   }
 
   getClienteById(id: string | number) {
@@ -23,5 +23,11 @@ export class ClientesService {
     return this.http.post(`${this.serverUrl}/api/v1/clientes`, cliente)
   }
 
-  putCliente() {}
+  putCliente(id: string | number, cliente: ClienteType) {
+    return this.http.put(`${this.serverUrl}/api/v1/clientes/${id}`, cliente)
+  }
+
+  deleteCliente(id: string | number) {
+    return this.http.delete(`${this.serverUrl}/api/v1/clientes/${id}`)
+  }
 }

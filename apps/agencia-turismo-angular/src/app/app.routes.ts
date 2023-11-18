@@ -7,6 +7,7 @@ import { pagamentosRoutes } from './routes/pagamentos.routes'
 import { clientesRoutes } from './routes/clientes.routes'
 import { servicosRoutes } from './routes/servicos.routes'
 import { comprasRoutes } from './routes/compras.routes'
+import { forceLoginGuard } from './guards/force-login.guard'
 
 export const routes: Routes = [
   {
@@ -30,29 +31,35 @@ export const routes: Routes = [
     children: [
       {
         path: 'inicio',
+        canActivate: [forceLoginGuard],
         loadComponent: () =>
           import('./pages/dashboard/dashboard.component').then((m) => m.DashboardComponent),
       },
       {
         path: 'clientes',
-        children: clientesRoutes
+        canActivate: [forceLoginGuard],
+        children: clientesRoutes,
       },
       {
         path: 'fornecedores',
-        children: fornecedoresRoutes
+        canActivate: [forceLoginGuard],
+        children: fornecedoresRoutes,
       },
       {
         path: 'servicos',
-        children: servicosRoutes
+        canActivate: [forceLoginGuard],
+        children: servicosRoutes,
       },
       {
         path: 'compras',
-        children: comprasRoutes
+        canActivate: [forceLoginGuard],
+        children: comprasRoutes,
       },
       {
         path: 'pagamentos',
-        children: pagamentosRoutes
-      }
+        canActivate: [forceLoginGuard],
+        children: pagamentosRoutes,
+      },
     ],
   },
 ]
