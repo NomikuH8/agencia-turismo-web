@@ -13,6 +13,9 @@ import { ClienteType } from 'shared'
 import { ClientesService } from '../../../services/v1/clientes.service'
 import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 import { DialogDeleteClientesComponent } from '../dialog-delete-clientes/dialog-delete-clientes.component'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-view-clientes',
@@ -26,6 +29,10 @@ import { DialogDeleteClientesComponent } from '../dialog-delete-clientes/dialog-
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './view-clientes.component.html',
   styleUrl: './view-clientes.component.scss',
@@ -33,8 +40,14 @@ import { DialogDeleteClientesComponent } from '../dialog-delete-clientes/dialog-
 export class ViewClientesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'action']
   clientes: ClienteType[] = []
+  clientesFiltered: ClienteType[] = []
   loading: boolean = false
   wentError: boolean = false
+  filtersGroup: FormGroup = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl(),
+    email: new FormControl(),
+  })
 
   constructor(
     private clientesService: ClientesService,
@@ -56,8 +69,9 @@ export class ViewClientesComponent implements OnInit {
           if (!cliente.deletado) this.clientes.push(cliente)
         }
         this.loading = false
+        this.filterClientes()
       },
-      error: (err) => {
+      error: () => {
         const snackBarRef = this._snackBar.open('Algum erro ocorreu!', 'Recarregar tela', {
           duration: 5000,
         })
@@ -65,6 +79,31 @@ export class ViewClientesComponent implements OnInit {
         this.loading = false
       },
     })
+  }
+
+  filterClientes(): void {
+    this.clientesFiltered = this.clientes
+    const id = this.filtersGroup.controls['id'].value
+    const name = this.filtersGroup.controls['name'].value
+    const email = this.filtersGroup.controls['email'].value
+
+    if (id) {
+      this.clientesFiltered = this.clientesFiltered.filter(
+        (val) => val.id?.toString().startsWith(id),
+      )
+    }
+
+    if (name) {
+      this.clientesFiltered = this.clientesFiltered.filter(
+        (val) => val.nome?.toLowerCase().startsWith(name),
+      )
+    }
+
+    if (email) {
+      this.clientesFiltered = this.clientesFiltered.filter(
+        (val) => val.email?.toLowerCase().startsWith(email),
+      )
+    }
   }
 
   createCliente(): void {
