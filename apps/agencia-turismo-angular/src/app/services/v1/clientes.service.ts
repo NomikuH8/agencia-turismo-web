@@ -20,14 +20,14 @@ export class ClientesService {
   }
 
   postCliente(cliente: ClienteType) {
-    return this.http.post(`${this.serverUrl}/api/v1/clientes`, cliente)
+    return this.http.post<{ id: number }>(`${this.serverUrl}/api/v1/clientes`, cliente)
   }
 
   putCliente(id: string | number, cliente: ClienteType) {
-    return this.http.put(`${this.serverUrl}/api/v1/clientes/${id}`, cliente)
+    return this.http.put<{ success: boolean }>(`${this.serverUrl}/api/v1/clientes/${id}`, cliente)
   }
 
   deleteCliente(id: string | number) {
-    return this.http.delete(`${this.serverUrl}/api/v1/clientes/${id}`)
+    return this.http.delete<{ success: boolean }>(`${this.serverUrl}/api/v1/clientes/${id}`)
   }
 }

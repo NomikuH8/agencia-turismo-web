@@ -1,0 +1,23 @@
+<div class="top-bar">
+  <h1>Criar novo cliente</h1>
+</div>
+
+<div class="main-container">
+  <form [formGroup]="formGroup" (submit)="submitForm()">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input type="text" autocomplete="off" matInput formControlName="nome" />
+      <mat-error>{{ getErrorMessageNome() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input type="text" autocomplete="off" matInput formControlName="email" />
+      <mat-error>{{ getErrorMessageEmail() }}</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" [disabled]="formGroup.invalid">
+      {{ mode === 'create' ? 'Criar' : 'Editar' }}
+    </button>
+  </form>
+</div>
