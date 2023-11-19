@@ -3,7 +3,7 @@
   <button mat-flat-button color="primary" (click)="createCliente()">Criar novo cliente</button>
 </div>
 
-<div>
+<div class="main-content">
   @if (!loading) {
     <table mat-table [dataSource]="clientes">
       <ng-container matColumnDef="id">
