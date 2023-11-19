@@ -95,13 +95,13 @@ export class ViewClientesComponent implements OnInit {
 
     if (name) {
       this.clientesFiltered = this.clientesFiltered.filter(
-        (val) => val.nome?.toLowerCase().startsWith(name),
+        (val) => val.nome?.toLowerCase().startsWith(name.toLowerCase()),
       )
     }
 
     if (email) {
       this.clientesFiltered = this.clientesFiltered.filter(
-        (val) => val.email?.toLowerCase().startsWith(email),
+        (val) => val.email?.toLowerCase().startsWith(email.toLowerCase()),
       )
     }
   }
