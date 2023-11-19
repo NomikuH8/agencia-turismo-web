@@ -120,4 +120,8 @@ export class CreateClientesComponent implements OnInit {
       duration: 3000,
     })
   }
+
+  onClickVoltar(): void {
+    history.back()
+  }
 }
