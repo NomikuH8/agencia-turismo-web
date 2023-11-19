@@ -2,11 +2,11 @@ import { Routes } from '@angular/router'
 
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component'
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component'
-import { fornecedoresRoutes } from './routes/fornecedores.routes'
-import { pagamentosRoutes } from './routes/pagamentos.routes'
-import { clientesRoutes } from './routes/clientes.routes'
-import { servicosRoutes } from './routes/servicos.routes'
-import { comprasRoutes } from './routes/compras.routes'
+import { fornecedoresRoutes } from './pages/fornecedores/fornecedores.routes'
+import { pagamentosRoutes } from './pages/pagamentos/pagamentos.routes'
+import { clientesRoutes } from './pages/clientes/clientes.routes'
+import { servicosRoutes } from './pages/servicos/servicos.routes'
+import { comprasRoutes } from './pages/compras/compras.routes'
 import { forceLoginGuard } from './guards/force-login.guard'
 
 export const routes: Routes = [

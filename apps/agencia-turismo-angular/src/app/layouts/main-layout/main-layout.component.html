@@ -1,8 +1,8 @@
 <mat-drawer-container hasBackdrop="true">
   <mat-drawer #drawer mode="push">
     <mat-action-list>
-      @for (listItem of drawerList; track $index) {
-        <button mat-list-item (click)="goTo(listItem.value)">{{ listItem.text }}</button>
+      @for (listItem of drawerList; track listItem.value) {
+        <button mat-list-item form (click)="goTo(listItem.value)">{{ listItem.text }}</button>
       }
     </mat-action-list>
   </mat-drawer>
