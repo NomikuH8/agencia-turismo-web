@@ -12,12 +12,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Senha</mat-label>
-          <input
-            [type]="hidePassword ? 'password' : 'text'"
-            matInput
-            formControlName="password"
-            matTooltip="admin"
-          />
+          <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password" matTooltip="admin" />
           <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
             <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
